@@ -1,0 +1,39 @@
+header {
+    background: rgb(4,14,87);
+    background: linear-gradient(90deg, rgba(4,14,87,1) 0%, rgba(7,76,121,1) 50%, rgba(3,17,97,1) 100%); 
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+h2 {
+    font-size: 2rem;
+}
+.flex {
+    display:flex;
+    flex-wrap: wrap;
+}
+#city-search {
+    display:inline-block;
+    width:25%;
+    flex-shrink: 0;
+}
+#todays-weather {
+    border: 2px black solid;
+    display: inline-block;
+    width: 74%;
+    flex-shrink: 0;
+
+}
+#previous-cities {
+    display:inline-block;
+    /* border: 2px black solid; */
+    width: 24.7%;
+    height: 40px;
+    flex-shrink: 0;
+}
+#future-forecast {
+    /* border: 2px black solid; */
+    display: inline-block;
+    width: 74%;
+    flex-shrink: 0;
+}
