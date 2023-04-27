@@ -33,7 +33,21 @@ h2 {
 }
 #future-forecast {
     /* border: 2px black solid; */
-    display: inline-block;
+    display: flex;
     width: 74%;
     flex-shrink: 0;
 }
+
+.forecast-card {
+    background-color:blanchedalmond;
+    margin: 10px 5px;
+}
+
+#past-cities li {
+    list-style: none;
+    font-size: 1.3rem;
+}
+ #submit {
+    background-color: bisque;
+    border-radius: 10px;
+ }
