@@ -1,3 +1,7 @@
+body{
+    background-color: #969697;
+    /* ^^sets the background color  */
+}
 header {
     background: rgb(4,14,87);
     background: linear-gradient(90deg, rgba(4,14,87,1) 0%, rgba(7,76,121,1) 50%, rgba(3,17,97,1) 100%); 
@@ -5,6 +9,7 @@ header {
     display: flex;
     justify-content: center;
 }
+/* ^^gives the header a gradient background, and centers Title  */
 h2 {
     font-size: 2rem;
 }
@@ -12,42 +17,76 @@ h2 {
     display:flex;
     flex-wrap: wrap;
 }
+/* ^^sets up a flex box  */
 #city-search {
     display:inline-block;
     width:25%;
     flex-shrink: 0;
+    border-bottom: 1px #333 solid;
 }
+/* ^^makes the city search section take up 25% of the space and tells it not to shrink, gives it a bottom border  */
 #todays-weather {
-    border: 2px black solid;
+    border: 2px black dashed;
     display: inline-block;
-    width: 74%;
+    width: 72%;
     flex-shrink: 0;
-
+    margin: 5px 5px;
+    padding: 10px;
+    font-weight: bolder;
 }
+/* ^^tells the current weather section to take up 72% of space, and tells it not to shrink, giving it a dashed border  */
 #previous-cities {
     display:inline-block;
-    /* border: 2px black solid; */
     width: 24.7%;
     height: 40px;
     flex-shrink: 0;
+    text-align: center;
 }
+/* ^^^Sets the width of the previous city section and aligns the list to center content  */
 #future-forecast {
-    /* border: 2px black solid; */
     display: flex;
     width: 74%;
     flex-shrink: 0;
+    font-weight: bolder;
+    justify-content: center;
 }
-
+/* ^^^^Gives the future forcast its width and centers the content  */
 .forecast-card {
-    background-color:blanchedalmond;
+    background: rgb(18,10,113);
+background: linear-gradient(0deg, rgba(18,10,113,1) 0%, rgba(41,30,200,1) 46%, rgba(2,6,107,1) 100%);;
     margin: 10px 5px;
+    color: white;
+    padding:10px;
 }
-
+/* ^^^Gives each card a gradient background, changes the text to display white  */
 #past-cities li {
     list-style: none;
     font-size: 1.3rem;
-}
- #submit {
-    background-color: bisque;
+    margin: 4px 2px;
+    background-color: #333;
+    color:aliceblue;
     border-radius: 10px;
+}
+/* ^^^^Sets up the previous city list to look like buttons with rounded edges  */
+#past-cities:hover{
+    cursor: pointer;
+}
+/* ^^^makes the cursor a pointer when hovering over a previous city to let user know its clickable */
+ #submit {
+    background-color: #080AA6;
+    border-radius: 10px;
+    color: white;
+    margin: 5px;
+    padding: 2px 2px;
  }
+ /* ^^^styles the submit button to make it look better  */
+ #submit:hover {
+    cursor:pointer;
+ }
+ /* ^^^makes the cursor a pointer when hovering over the submit button to let user know its clickable */
+ #submit p {
+    margin: 2px;
+    font-weight: bolder;
+    font-size: medium;
+ }
+ /* ^^makes the submit button text bold  */

@@ -24,27 +24,9 @@ var dayFourDate = document.getElementById('date4');
 var dayFiveDate = document.getElementById('date5');
 var submitBtn = document.getElementById('submit');
 var cityDisplay = document.getElementById('past-cities');
-// var cityChosen = $("input:text").val();
-// async function logJSONData() {
-//   var cityChosen = 'london'
-//     const response = await fetch("https://api.openweathermap.org/data/2.5/weather?q="+ cityChosen + "&appid=adda0e0981546d2547cfe49575e4923c&units=imperial");
-//     const jsonData = await response.json();
-//     console.log(jsonData);
-//    console.log(jsonData.weather[0].description) 
-//   }
-//   logJSONData()
-
-  // async function logJSONDataForecast() {
-  //   var cityChosen = 'london'
-  //     const response = await fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ cityChosen + "&appid=adda0e0981546d2547cfe49575e4923c&units=imperial");
-  //     const jsonData = await response.json();
-  //     console.log(jsonData);
-  //    console.log(jsonData.list[39].main.temp) 
-  //   }
-  //   logJSONDataForecast()
+// ^^^sets up all my variables to be used later 
   
    async function displayCurrentWeather(cityChosen){
-    // var cityChosen =  document.querySelector('#user-city').Value;
       const response = await fetch("https://api.openweathermap.org/data/2.5/weather?q="+ cityChosen + "&appid=adda0e0981546d2547cfe49575e4923c&units=imperial");
       const jsonData = await response.json();
       console.log(jsonData);
@@ -58,14 +40,12 @@ var cityDisplay = document.getElementById('past-cities');
       var dateUnix = jsonData.dt;
       var date= dayjs.unix(dateUnix).format('MM/D/YYYY')
       currentCity.textContent= cityChosen +' ('+date+')';
-      currentTemp.textContent= temperature +' farenheit';
+      currentTemp.textContent= temperature +'° farenheit';
       currentHumidity.textContent= 'Humidity: ' + humidity +' %';
       currentWind.textContent= 'Wind Speed: ' + windSpeed +' MPH';
-
-
     }
+    // ^^^pulls the current weather data from the api, pulling the values wanted and displaying them onto the page 
     async function displayForecast(cityChosen) {
-      // var cityChosen =  document.querySelector('#user-city').Value;
       const response = await fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ cityChosen + "&appid=adda0e0981546d2547cfe49575e4923c&units=imperial");
       const jsonData = await response.json();
       console.log(jsonData);
@@ -78,7 +58,7 @@ var cityDisplay = document.getElementById('past-cities');
      var temp01 = jsonData.list[3].main.temp
      var humidity01 = jsonData.list[3].main.humidity
      var windSpeed01 = jsonData.list[3].wind.speed
-     dayOneTemp.textContent = temp01 + ' Farenheit'
+     dayOneTemp.textContent = temp01 + '° Farenheit'
      dayOneHumidity.textContent = 'Humidity: '+ humidity01+ ' %'
      dayOneWind.textContent = 'Wind Speed: '+ windSpeed01 +' MPH'
 
@@ -91,7 +71,7 @@ var cityDisplay = document.getElementById('past-cities');
      var temp02 = jsonData.list[11].main.temp
      var humidity02 = jsonData.list[11].main.humidity
      var windSpeed02 = jsonData.list[11].wind.speed
-     dayTwoTemp.textContent = temp02 + ' Farenheit'
+     dayTwoTemp.textContent = temp02 + '° Farenheit'
      dayTwoHumidity.textContent = 'Humidity: '+ humidity02+ ' %'
      dayTwoWind.textContent = 'Wind Speed: '+ windSpeed02 +' MPH'
 
@@ -104,7 +84,7 @@ var cityDisplay = document.getElementById('past-cities');
      var temp03 = jsonData.list[19].main.temp
      var humidity03 = jsonData.list[19].main.humidity
      var windSpeed03 = jsonData.list[19].wind.speed
-     dayThreeTemp.textContent = temp03 + ' Farenheit'
+     dayThreeTemp.textContent = temp03 + '° Farenheit'
      dayThreeHumidity.textContent = 'Humidity: '+ humidity03+ ' %'
      dayThreeWind.textContent = 'Wind Speed: '+ windSpeed03 +' MPH'
 
@@ -117,7 +97,7 @@ var cityDisplay = document.getElementById('past-cities');
      var temp04 = jsonData.list[29].main.temp
      var humidity04 = jsonData.list[29].main.humidity
      var windSpeed04 = jsonData.list[29].wind.speed
-     dayFourTemp.textContent = temp04 + ' Farenheit'
+     dayFourTemp.textContent = temp04 + '° Farenheit'
      dayFourHumidity.textContent = 'Humidity: '+ humidity04+ ' %'
      dayFourWind.textContent = 'Wind Speed: '+ windSpeed04 +' MPH'
 
@@ -130,11 +110,11 @@ var cityDisplay = document.getElementById('past-cities');
      var temp05 = jsonData.list[35].main.temp
      var humidity05 = jsonData.list[35].main.humidity
      var windSpeed05 = jsonData.list[35].wind.speed
-     dayFiveTemp.textContent = temp05 + ' Farenheit'
+     dayFiveTemp.textContent = temp05 + '° Farenheit'
      dayFiveHumidity.textContent = 'Humidity: '+ humidity05+ ' %'
      dayFiveWind.textContent = 'Wind Speed: '+ windSpeed05 +' MPH'
     }
-
+// ^^^Pulls data from the api for the future displayForecast, pulling the info I want and displaying it to the page 
     function displayPreviousCities(){
       cityDisplay.textContent = '';
       var pastCities = localStorage.getItem("pastCities");
@@ -152,6 +132,7 @@ var cityDisplay = document.getElementById('past-cities');
       }
        
     }
+    // ^^This function displays the previous cities from local storage onto the page 
     function saveCity(cityChosen) {
       if (cityChosen === null) {
       return;
@@ -172,7 +153,7 @@ var cityDisplay = document.getElementById('past-cities');
         }
       displayPreviousCities()
       }
-
+// ^^^Once the user inputs a city and hits sumbit that sity is saved to local storage 
 submitBtn.addEventListener('click',event =>{
   var cityChosen = $("input:text").val();
   console.log(cityChosen)
@@ -181,10 +162,12 @@ displayForecast(cityChosen);
 saveCity(cityChosen)
 $("input:text").val('');
 })
+// ^^^when the user hits the submit GamepadButton, the city they entered is collected and the data for that city is pulled and displayed 
 cityDisplay.addEventListener('click', event =>{
   console.log(event.target.innerText)
   displayCurrentWeather(event.target.innerText)
   displayForecast(event.target.innerText)
 })
+// ^^makes the previous city list into buttons, allowing the user to click any of them and pull up the data for that city again without having to search again 
 displayPreviousCities();
-
+// ^^displays the previous cities from local storage on load so they are readily available 
